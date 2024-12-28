@@ -18,7 +18,7 @@ import { useHotkeys, useLocalStorage } from "@mantine/hooks";
 // import { DatePicker } from "@mantine/dates";
 
 export default function MyTaskApp() {
-  // --------------------- THEME HANDLING ---------------------
+ 
   const [themeMode, setThemeMode] = useLocalStorage({
     key: "mantine-color-scheme",
     defaultValue: "light",
@@ -30,7 +30,7 @@ export default function MyTaskApp() {
 
   useHotkeys([["mod+J", () => switchThemeMode()]]);
 
-  // --------------------- TASKS: RETRIEVE & STORE ---------------------
+
   const [taskList, setTaskList] = useState([]);
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function MyTaskApp() {
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   }
 
-  // --------------------- MODAL FOR ADDING NEW TASK ---------------------
+  
   const [isCreateModalVisible, setIsCreateModalVisible] = useState(false);
 
   // Fields for new task creation
@@ -79,7 +79,7 @@ export default function MyTaskApp() {
     setDeadlineInput("");
   }
 
-  // --------------------- MODAL FOR EDITING TASK ---------------------
+
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
   const [currentEditIndex, setCurrentEditIndex] = useState(null);
 
@@ -119,7 +119,7 @@ export default function MyTaskApp() {
     setIsEditModalVisible(false);
   }
 
-  // --------------------- DELETING A TASK ---------------------
+
   function removeTask(index) {
     setTaskList((prevTasks) => {
       const remaining = prevTasks.filter((_, i) => i !== index);
@@ -128,7 +128,7 @@ export default function MyTaskApp() {
     });
   }
 
-  // --------------------- SORT & FILTER OPTIONS ---------------------
+
   const [highlightState, setHighlightState] = useState(null); // "Done" | "Doing right now" | "Not done" | null
   const [stateFilter, setStateFilter] = useState(null); // same as above
   const [sortByDueDate, setSortByDueDate] = useState(false);
